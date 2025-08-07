@@ -1,108 +1,152 @@
-name: Wundrsight SWE AI/ML Intern Assignment
-description: >
-  This repository contains my completed submission for the Wundrsight Software Engineering (AI/ML Intern) assignment.
-  It demonstrates practical understanding of AI/ML integration and backend engineering under time constraints.
-![Uploading Screenshot (7).png…]()
+# 🧠 Wundrsight SWE AI/ML Intern Assignment
 
-tech_stack:![Uploading Screenshot (5).png…]()
+This repository contains my completed submission for the **Wundrsight Software Engineering (AI/ML Intern)** assignment. It demonstrates hands-on knowledge of **AI/ML integration**, **backend development**, and **frontend engineering**, built with a production-first mindset under tight timelines.
 
-  backend:![Uploading Screenshot (6).png…]()
+---
 
-    - Node.js
-    - Express.js
-    - Prisma ORM
-    - SQLite (development)<img width="1920" height="1080" alt="Screenshot (4)" src="https://github.com/user-attachments/assets/df31b664-7e59-4cf6-b88c-f07ca32dabf6" />
+## ⚙️ Tech Stack
 
-    - PostgreSQL (production)
-    - JWT Authentication
-  frontend:
-    - React
-    - Vite
-    - Axios
-  other:
-    - CORS
-    - Rate limiting
-    - Password hashing
+### 🔧 Backend
+- Node.js
+- Express.js
+- Prisma ORM
+- SQLite (development)
+- PostgreSQL (production)
+- JWT Authentication
+- Password Hashing
+- CORS
+- Rate Limiting
 
-features:
-  - User registration & login
-  - Role-based access control (Patient/Admin)
-  - View & book 30-minute appointment slots
-  - Prevent double-booking via DB constraint
-  - Admin dashboard to view all bookings
-  - API error handling, validation, and logging
-  - JWT-based protected routes
+### 💻 Frontend
+- React
+- Vite
+- Axios
 
-setup:
-  clone_repo: |
-    git clone https://github.com/yourusername/wundrsight-assignment.git
-    cd wundrsight-assignment/backend
-  install_dependencies: npm install
-  configure_env: |
-    cp .env.example .env
-    # Edit .env with your values:
-    # DATABASE_URL="file:./dev.db"
-    # JWT_SECRET="your-secret"
-    # FRONTEND_URL="http://localhost:5173"
-  initialize_db: |
-    npm run prisma:generate
-    npm run prisma:migrate
-    npm run prisma:seed
-  run_server: npm run dev
+---
 
-credentials:
-  patient:
-    email: patient@example.com
-    password: Passw0rd!
-  admin:
-    email: admin@example.com
-    password: Passw0rd!
+## ✨ Key Features
 
-api_endpoints:
-  - method: GET
-    path: /health
-    description: Health check endpoint
-  - method: POST
-    path: /api/register
-    description: Register a new user
-  - method: POST
-    path: /api/login
-    description: Login and receive JWT token
-  - method: GET
-    path: /api/slots/available
-    description: View available slots
-  - method: POST
-    path: /api/book
-    description: Book an appointment slot
-  - method: GET
-    path: /api/my-bookings
-    description: View user's bookings
-  - method: GET
-    path: /api/all-bookings
-    description: Admin view of all bookings
+- ✅ User registration and login
+- ✅ Role-based access control (Patient / Admin)
+- ✅ View & book 30-minute appointment slots
+- ✅ Prevent double-booking (via DB constraints)
+- ✅ Admin dashboard to view all bookings
+- ✅ API validation, logging & error handling
+- ✅ JWT-based authentication for protected routes
 
-folder_structure: |
-  backend/
-  ├── prisma/
-  │   └── schema.prisma
-  ├── src/
-  │   ├── controllers/
-  │   ├── middleware/
-  │   ├── routes/
-  │   ├── utils/
-  │   └── app.js
-  ├── server.js
-  ├── .env.example
-  └── README.md
+---
 
-notes:
-  - Submission was slightly delayed due to internet outage; kindly consider.
-  - Full code tested and documented.
-  - GitHub Repo: https://github.com/yourusername/wundrsight-assignment
+## 📁 Project Structure
 
-contact:
-  name: Your Name
-  email: your.email@example.com
-  github: https://github.com/yourusername
+```
+backend/
+├── prisma/
+│   └── schema.prisma
+├── src/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── routes/
+│   ├── utils/
+│   └── app.js
+├── server.js
+├── .env.example
+└── README.md
+```
 
-license: MIT
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/yourusername/wundrsight-assignment.git
+cd wundrsight-assignment/backend
+```
+
+### 2. Install dependencies
+```bash
+npm install
+```
+
+### 3. Configure environment variables
+```bash
+cp .env.example .env
+```
+
+Edit your `.env` file:
+```env
+DATABASE_URL="file:./dev.db"
+JWT_SECRET="your-secure-jwt-secret"
+FRONTEND_URL="http://localhost:5173"
+```
+
+> ✅ Use a PostgreSQL `DATABASE_URL` string in production.
+
+---
+
+## 🧱 Database Setup
+
+```bash
+npm run prisma:generate
+npm run prisma:migrate
+npm run prisma:seed
+```
+
+---
+
+## ▶️ Run the Server
+
+```bash
+npm run dev
+```
+
+---
+
+## 🔐 Test Credentials
+
+### Patient
+- **Email:** `patient@example.com`
+- **Password:** `Passw0rd!`
+
+### Admin
+- **Email:** `admin@example.com`
+- **Password:** `Passw0rd!`
+
+---
+
+## 📡 API Endpoints
+
+| Method | Endpoint                  | Description                        |
+|--------|---------------------------|------------------------------------|
+| GET    | `/health`                 | Health check                       |
+| POST   | `/api/register`           | Register a new user                |
+| POST   | `/api/login`              | Login and receive JWT              |
+| GET    | `/api/slots/available`    | Get available time slots           |
+| POST   | `/api/book`               | Book a time slot                   |
+| GET    | `/api/my-bookings`        | View current user's bookings       |
+| GET    | `/api/all-bookings`       | Admin view of all bookings         |
+
+---
+
+## 🖼️ Screenshots
+
+> *(Include actual image links from your repo or uploads)*
+
+---
+
+## 📝 Notes
+
+- Submission was slightly delayed due to an **unexpected internet outage** — thank you for your understanding.
+- Codebase is fully tested, documented, and cleanly structured.
+
+---
+
+## 📬 Contact
+
+- **Name:** Your Name  
+- **Email:** your.email@example.com  
+- **GitHub:** [@yourusername](https://github.com/yourusername)
+
+---
+
+> 🧠 Built with ❤️ under time pressure for Wundrsight.
