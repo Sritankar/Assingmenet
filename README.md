@@ -2,13 +2,17 @@ name: Wundrsight SWE AI/ML Intern Assignment
 description: >
   This repository contains my completed submission for the Wundrsight Software Engineering (AI/ML Intern) assignment.
   It demonstrates practical understanding of AI/ML integration and backend engineering under time constraints.
+![Uploading Screenshot (7).png…]()
 
-tech_stack:
-  backend:
+tech_stack:![Uploading Screenshot (5).png…]()
+
+  backend:![Uploading Screenshot (6).png…]()
+
     - Node.js
     - Express.js
     - Prisma ORM
-    - SQLite (development)
+    - SQLite (development)<img width="1920" height="1080" alt="Screenshot (4)" src="https://github.com/user-attachments/assets/df31b664-7e59-4cf6-b88c-f07ca32dabf6" />
+
     - PostgreSQL (production)
     - JWT Authentication
   frontend:
