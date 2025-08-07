@@ -7,10 +7,7 @@ const bookSlot = async (req, res) => {
 
     if (!slotId) {
       return res.status(400).json({
-        error: {
-          code: 'MISSING_SLOT_ID',
-          message: 'Slot ID is required'
-        }
+        error: { code: 'MISSING_SLOT_ID', message: 'Slot ID is required' }
       });
     }
 
@@ -21,32 +18,21 @@ const bookSlot = async (req, res) => {
 
     if (!slot) {
       return res.status(404).json({
-        error: {
-          code: 'SLOT_NOT_FOUND',
-          message: 'Slot not found'
-        }
+        error: { code: 'SLOT_NOT_FOUND', message: 'Slot not found' }
       });
     }
 
     if (slot.booking) {
       return res.status(409).json({
-        error: {
-          code: 'SLOT_TAKEN',
-          message: 'This slot is already booked'
-        }
+        error: { code: 'SLOT_TAKEN', message: 'This slot is already booked' }
       });
     }
 
     const booking = await prisma.booking.create({
-      data: {
-        userId,
-        slotId
-      },
+      data: { userId, slotId },
       include: {
         slot: true,
-        user: {
-          select: { id: true, name: true, email: true }
-        }
+        user: { select: { id: true, name: true, email: true } }
       }
     });
 
@@ -56,21 +42,13 @@ const bookSlot = async (req, res) => {
     });
   } catch (error) {
     console.error('Booking error:', error);
-    
     if (error.code === 'P2002') {
       return res.status(409).json({
-        error: {
-          code: 'SLOT_TAKEN',
-          message: 'This slot is already booked'
-        }
+        error: { code: 'SLOT_TAKEN', message: 'This slot is already booked' }
       });
     }
-
     res.status(500).json({
-      error: {
-        code: 'BOOKING_FAILED',
-        message: 'Failed to book slot'
-      }
+      error: { code: 'BOOKING_FAILED', message: 'Failed to book slot' }
     });
   }
 };
@@ -78,27 +56,16 @@ const bookSlot = async (req, res) => {
 const getMyBookings = async (req, res) => {
   try {
     const userId = req.user.id;
-
     const bookings = await prisma.booking.findMany({
       where: { userId },
-      include: {
-        slot: true
-      },
-      orderBy: {
-        slot: {
-          startAt: 'asc'
-        }
-      }
+      include: { slot: true },
+      orderBy: { slot: { startAt: 'asc' } }
     });
-
     res.json({ bookings });
   } catch (error) {
     console.error('Get my bookings error:', error);
     res.status(500).json({
-      error: {
-        code: 'FETCH_BOOKINGS_FAILED',
-        message: 'Failed to fetch bookings'
-      }
+      error: { code: 'FETCH_BOOKINGS_FAILED', message: 'Failed to fetch bookings' }
     });
   }
 };
@@ -108,25 +75,15 @@ const getAllBookings = async (req, res) => {
     const bookings = await prisma.booking.findMany({
       include: {
         slot: true,
-        user: {
-          select: { id: true, name: true, email: true }
-        }
+        user: { select: { id: true, name: true, email: true } }
       },
-      orderBy: {
-        slot: {
-          startAt: 'asc'
-        }
-      }
+      orderBy: { slot: { startAt: 'asc' } }
     });
-
     res.json({ bookings });
   } catch (error) {
     console.error('Get all bookings error:', error);
     res.status(500).json({
-      error: {
-        code: 'FETCH_BOOKINGS_FAILED',
-        message: 'Failed to fetch all bookings'
-      }
+      error: { code: 'FETCH_BOOKINGS_FAILED', message: 'Failed to fetch all bookings' }
     });
   }
 };

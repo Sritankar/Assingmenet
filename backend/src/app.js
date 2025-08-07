@@ -10,7 +10,7 @@ const bookingRoutes = require('./routes/bookings');
 
 const app = express();
 
-// Middleware
+// Security & parsing middleware
 app.use(helmet());
 app.use(cors({
   origin: 'http://localhost:5173',
@@ -18,19 +18,15 @@ app.use(cors({
 }));
 app.use(express.json());
 
-// Rate limit only on auth
+// Rate limiter for auth endpoints
 const authLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 10
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 10                 // limit each IP to 10 requests per window
 });
 
-// 1) Mount auth routes at /api
+// Mount routes
 app.use('/api', authLimiter, authRoutes);
-
-// 2) Mount slot routes at /api/slots
 app.use('/api/slots', slotRoutes);
-
-// 3) Mount booking routes at /api
 app.use('/api', bookingRoutes);
 
 // Health check
@@ -38,7 +34,7 @@ app.get('/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
-// 404 handler (after all routes)
+// 404 handler
 app.use('*', (req, res) => {
   res.status(404).json({
     error: { code: 'NOT_FOUND', message: 'Endpoint not found' }
